@@ -7,26 +7,14 @@
 <body>
 <div class="container">
 
-    <a href="/add" class="btn btn-primary m-b-20">Добавить сотрудника</a>
-    
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Post</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="person : ${persons}">
-            <td th:text="${person.id}"></td>
-            <td th:text="${person.name}"></td>
-            <td th:text="${person.salary}"></td>
-            <td th:text="${person.post}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <a href="/" class="btn btn-primary">Назад</a>
+
+    <form action="/add" method="post" th:object="${person}">
+        <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Имя">
+        <input type="text" name="salary" th:field="*{salary}" class="form-control" placeholder="Зарпалата">
+        <input type="text" name="post" th:field="*{post}" class="form-control" placeholder="Должность">
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
 </div>
 
 

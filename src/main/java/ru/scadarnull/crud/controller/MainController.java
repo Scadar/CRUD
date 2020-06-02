@@ -4,7 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import ru.scadarnull.crud.entity.Person;
 import ru.scadarnull.crud.service.PersonService;
+
+import javax.annotation.PostConstruct;
 
 @Controller
 public class MainController {
@@ -12,10 +17,22 @@ public class MainController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping
+    @GetMapping("/")
     public String main(Model model){
         model.addAttribute("persons", personService.findAll());
         return "main";
+    }
+
+    @GetMapping("/add")
+    public String showPerson(Model model){
+        model.addAttribute("person", new Person());
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String addPerson(@ModelAttribute Person person){
+        personService.save(person);
+        return "redirect:/";
     }
 
 }
