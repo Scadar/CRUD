@@ -3,9 +3,7 @@ package ru.scadarnull.crud.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.scadarnull.crud.entity.Person;
 import ru.scadarnull.crud.service.PersonService;
 
@@ -33,6 +31,12 @@ public class MainController {
     public String addPerson(@ModelAttribute Person person){
         personService.save(person);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit/{person}")
+    public String showEditPerson(@PathVariable Person person, Model model){
+        model.addAttribute("person", person);
+        return "edit";
     }
 
 }
