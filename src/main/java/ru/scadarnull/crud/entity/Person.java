@@ -1,13 +1,10 @@
-package ru.scadarnull.entity;
+package ru.scadarnull.crud.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -25,5 +22,6 @@ public class Person {
 
     private Integer salary;
 
-    private Set<Car> cars;
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ru.scadarnull.crud.entity.Car> cars;
 }

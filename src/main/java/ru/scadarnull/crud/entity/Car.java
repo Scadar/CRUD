@@ -1,13 +1,11 @@
-package ru.scadarnull.entity;
+package ru.scadarnull.crud.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -22,4 +20,7 @@ public class Car {
     private String mark;
 
     private String number;
+
+    @ManyToOne
+    private Person owner;
 }

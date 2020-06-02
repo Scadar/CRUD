@@ -1,11 +1,11 @@
-package ru.scadarnull;
+package ru.scadarnull.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main {
+public class CrudApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(CrudApplication.class, args);
     }
 }
