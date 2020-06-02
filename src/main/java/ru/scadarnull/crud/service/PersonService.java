@@ -21,4 +21,8 @@ public class PersonService {
         personRepo.save(person);
     }
 
+    public void delete(Person person){
+        personRepo.delete(person);
+    }
+
 }

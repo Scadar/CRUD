@@ -39,4 +39,9 @@ public class MainController {
         return "edit";
     }
 
+    @GetMapping("/delete/{person}")
+    public String deletePerson(@PathVariable Person person){
+        personService.delete(person);
+        return "redirect:/";
+    }
 }
