@@ -5,13 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Person {
+
+    public Person(String name, Integer salary,String post) {
+        this.name = name;
+        this.salary = salary;
+        this.post = post;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +27,4 @@ public class Person {
     private String post;
 
     private Integer salary;
-
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<ru.scadarnull.crud.entity.Car> cars;
 }
